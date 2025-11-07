@@ -1,6 +1,6 @@
-# React Native Foundation
+# LetsSummit React Native Application
 
-A ready-made, reusable Expo React Native foundation repository with fundamental setup and essential libraries for rapid mobile app development.
+A react native repository of LetsSummit application
 
 ## Table of Contents
 
