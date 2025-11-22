@@ -36,78 +36,12 @@ if [ ! -f "package.json" ]; then
     exit 1
 fi
 
-# Authenticate with AWS SDK CodeArtifact
-echo "🔐 Authenticating with AWS SDK CodeArtifact..."
-./scripts/sdkAuth.sh && echo "✅ SDK authentication completed" || {
-    echo "❌ SDK authentication failed"
-    exit 1
-}
-
 # Install Dependencies
 echo "⌛ Installing yarn dependencies..."
 yarn install && echo "✅ Installed yarn dependencies" || {
     echo "❌ Yarn install failed"
     exit 1
 }
-
-# iOS setup
-if [[ "$PLATFORM" == "ios" || "$PLATFORM" == "all" ]]; then
-    echo "🍎 Setting up iOS dependencies..."
-    cd ios
-    
-    # Check if Bundler is available
-    if command -v bundle >/dev/null 2>&1; then
-        echo "⌛ Attempting bundle exec pod install..."
-        if bundle exec pod install --repo-update 2>/dev/null; then
-            echo "✅ Installed Pods via bundle exec with repo update"
-        elif bundle exec pod install 2>/dev/null; then
-            echo "✅ Installed Pods via bundle exec without repo update"
-        else
-            echo "⚠️  Bundle exec pod install failed, installing Ruby gems first..."
-            bundle install && echo "✅ Installed Ruby gems" || {
-                echo "❌ Bundle install failed"
-                exit 1
-            }
-            
-            echo "⌛ Installing Pods after bundle install..."
-            if bundle exec pod install --repo-update; then
-                echo "✅ Installed Pods via bundle exec with repo update"
-            elif bundle exec pod install; then
-                echo "✅ Installed Pods via bundle exec without repo update"
-            else
-                echo "❌ Pod install failed via bundle exec"
-                exit 1
-            fi
-        fi
-    else
-        echo "❌ Bundler not found. Bundler is required for iOS setup."
-        exit 1
-    fi
-    cd ..
-else
-    echo "ℹ️  Skipping iOS setup (platform: $PLATFORM)"
-fi
-
-# Android setup
-if [[ "$PLATFORM" == "android" || "$PLATFORM" == "all" ]]; then
-    echo "🤖 Setting up Android dependencies..."
-    cd android
-    
-    # Check if gradlew exists and is executable
-    if [ -f "./gradlew" ]; then
-        chmod +x ./gradlew
-        echo "⌛ Downloading Gradle dependencies..."
-        ./gradlew --version && echo "✅ Gradle setup completed" || {
-            echo "❌ Gradle setup failed"
-            exit 1
-        }
-    else
-        echo "⚠️  gradlew not found, skipping Gradle setup"
-    fi
-    cd ..
-else
-    echo "ℹ️  Skipping Android setup (platform: $PLATFORM)"
-fi
 
 echo "✅ Project setup completed successfully for platform: $PLATFORM!"
 

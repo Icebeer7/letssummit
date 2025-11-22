@@ -1,10 +1,10 @@
 import { Dimensions } from 'react-native';
 
+import { PoppinsFont } from '@utils/PoppinsFontUtils';
+import { spacingWithScaleFactor, typographyWithScaleFactor } from '@utils/ThemeUtils';
+import { clamp, convertToExpectedRange } from '../utils/MathUtils';
 import { colors as Colors } from './Colors';
 import { ColorPalette, Shadows, Shapes, Theme, Typography } from './Theme.interface';
-import { clamp, convertToExpectedRange } from '../utils/MathUtils';
-import { spacingWithScaleFactor, typographyWithScaleFactor } from '../utils/ThemeUtils';
-import { PoppinsFont } from '@utils/PoppinsFontUtils';
 
 const DEFAULT_COLOR_PALLETE: ColorPalette = {
   backgroundLight: '#F6F7F9',
