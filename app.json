@@ -6,19 +6,17 @@
     "orientation": "portrait",
     "scheme": "reactnativefoundation",
     "userInterfaceStyle": "automatic",
+    "icon": "./assets/svgs/journime_logo.svg",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.journime"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.journime"
+      "predictiveBackGestureEnabled": false
     },
     "web": {
       "bundler": "metro",
@@ -31,13 +29,13 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#1E1335",
-          "dark": { "backgroundColor": "#1E1335" }
+          "dark": {
+            "backgroundColor": "#1E1335"
+          }
         }
-      ]
+      ],
+      "expo-mail-composer"
     ],
-    "splash": {
-      "backgroundColor": "#1E1335"
-    },
     "experiments": {
       "typedRoutes": true
     }
