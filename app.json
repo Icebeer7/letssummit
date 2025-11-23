@@ -7,6 +7,9 @@
     "scheme": "reactnativefoundation",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/svgs/journime_logo.svg",
+    "splash": {
+      "image": "./assets/images/splash_screen.png"
+    },
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
@@ -29,6 +32,7 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#1E1335",
+          "image": "./assets/images/splash_screen.png",
           "dark": {
             "backgroundColor": "#1E1335"
           }
