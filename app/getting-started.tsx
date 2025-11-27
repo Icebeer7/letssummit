@@ -1,5 +1,3 @@
-import JournimeLogo from '@assets/svgs/shinobi.svg';
-import ImageEnhanced from '@components/atoms/ImageEnhanced';
 import { useThemedStyleSheet } from '@theme/Theme.context';
 import { Theme } from '@theme/Theme.interface';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -17,7 +15,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function GettingStartedScreen() {
   const { styles } = useThemedStyleSheet(createStyles);
-  const logoY = useSharedValue(-15);
+  const logoY = useSharedValue(-40);
   const textOpacity = useSharedValue(0.5);
   const bgScale = useSharedValue(1.5);
 
@@ -29,7 +27,7 @@ export default function GettingStartedScreen() {
     });
 
     // Logo floating animation
-    logoY.value = withRepeat(withTiming(15, { duration: 2000, easing: Easing.linear }), -1, true);
+    logoY.value = withRepeat(withTiming(0, { duration: 2800, easing: Easing.linear }), -1, true);
 
     // Text blinking animation
     textOpacity.value = withRepeat(
@@ -71,10 +69,12 @@ export default function GettingStartedScreen() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <Animated.View style={logoAnimatedStyle}>
-            <ImageEnhanced
-              source={JournimeLogo}
-              style={{ width: 140, height: 140 }}
-              svgProps={{ stroke: 'white' }}
+            <Image
+              source={require('../assets/images/journime_logo.png')}
+              style={{
+                width: 180,
+                height: 180,
+              }}
             />
           </Animated.View>
           <View style={styles.subtitleContainer}>
