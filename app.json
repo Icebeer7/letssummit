@@ -6,20 +6,22 @@
     "orientation": "portrait",
     "scheme": "reactnativefoundation",
     "userInterfaceStyle": "automatic",
-    "icon": "./assets/svgs/journime_logo.svg",
+    "icon": "./assets/images/journime_logo.png",
     "splash": {
       "image": "./assets/images/splash_screen.png"
     },
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.journime"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.journime"
     },
     "web": {
       "bundler": "metro",
